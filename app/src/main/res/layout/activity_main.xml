@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/orangeLight"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"
+        android:background="#73A4DF"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Crud de productos"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refProduct"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/editReference"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Ingrese referencia"
+        android:textAlignment="center"
+        android:inputType="textPersonName"
+        android:drawableStart="@drawable/baseline_article_24"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/desProduct"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/editDescription"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Descripción"
+        android:textAlignment="center"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Costo"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/editPrice"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Costo"
+        android:textAlignment="center"
+        android:inputType="textPersonName"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo de Referencia"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <Spinner
+        android:id="@+id/spRefType"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        >
+        <ImageButton
+            android:id="@+id/ibSave"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_save_24"
+            />
+        <ImageButton
+            android:id="@+id/ibSearch"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_search_24"
+            />
+        <ImageButton
+            android:id="@+id/ibEdit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_edit_24"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        >
+        <ImageButton
+            android:id="@+id/ibDelete"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_delete_24"
+            />
+        <ImageButton
+            android:id="@+id/ibList"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_view_list_24"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
