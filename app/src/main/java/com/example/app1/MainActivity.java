@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText reference, description, price;
     Spinner refType;
     ImageButton save, search, edit, delete, list;
-    TextView message;
+    TextView message, xfullname;
     // Definir el array para llenar el spinner
     String[] arrayTypeRef = {"Comestible","No Comestible"};
     // Instanciar la clase clsDB para actualizar la base de datos
@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         delete = findViewById(R.id.ibDelete);
         list = findViewById(R.id.ibList);
         message = findViewById(R.id.tvMessage);
+        xfullname = findViewById(R.id.tvxfullname);
+
+        //muestre el nombre
+        xfullname.setText(xfullname.getText().toString()+getIntent().getStringExtra("xFullname"));
         // Definir el arrayAdapter para llenar el spinner
         ArrayAdapter<String> adpTypeRef = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked,arrayTypeRef);
         // Asignar el adaptador al Spinner

@@ -19,6 +19,15 @@
         android:textStyle="italic"
         android:background="#73A4DF"/>
 
+    <TextView
+        android:id="@+id/tvxfullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bienvenido(a)"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"/>
 
     <TextView
         android:layout_width="match_parent"

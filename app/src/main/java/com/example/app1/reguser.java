@@ -1,6 +1,7 @@
 package com.example.app1;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +44,13 @@ public class reguser extends AppCompatActivity {
         register = findViewById(R.id.btnRegisterR);
         sesion = findViewById(R.id.tvSesionR);
         // Eventos
+        sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), login.class));
+            }
+        });
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,54 +59,53 @@ public class reguser extends AppCompatActivity {
                 String mPassword = password.getText().toString();
                 if (checkData(mUser, mFullName, mPassword)){
                     if (searchUser(mUser).size() == 0){
-                        // Codigo para guardar el registro (producto)
+                        // Codigo para guardar el registro (user)
                         SQLiteDatabase osdbWrite = oDB.getWritableDatabase();
                         // ContentValues para agregar el registro
-                        ContentValues cvProduct = new ContentValues();
+                        ContentValues cvUser = new ContentValues();
                         // Asignar el contenido de cada campo con los valores digitados
-                        cvProduct.put("reference",mRef);
-                        cvProduct.put("description", mDesc);
-                        cvProduct.put("price", mPrice);
-                        cvProduct.put("typeref", mTypeRef.equals("Comestible") ? 1 : 0 );
-                        // Agregar el nuevo producto a la tabla
-                        osdbWrite.insert("product",null, cvProduct);
+                        cvUser.put("username",mUser);
+                        cvUser.put("fullname", mFullName);
+                        cvUser.put("password", mPassword);
+
+                        // Agregar el nuevo usuario a la tabla
+                        osdbWrite.insert("user",null, cvUser);
                         // Cerrar la conexion a la bd
                         osdbWrite.close();
-                        message.setTextColor(Color.GREEN);
-                        message.setText("Producto agregado correctamente...");
+                        Toast.makeText(getApplicationContext(), "usuario agregado correctamente", Toast.LENGTH_LONG).show();
 
                     }
                     else{
-                        message.setTextColor(Color.RED);
-                        message.setText("Referencia EXISTENTE. Inténtelo con otra");
+                        Toast.makeText(getApplicationContext(),"Este usuario ya exite...", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
-                    message.setTextColor(Color.RED);
-                    message.setText("Debe ingresar todos los datos...");
+                    Toast.makeText(getApplicationContext(),"Ingrese todos los datos", Toast.LENGTH_LONG).show();
                 }
             }
 
         });
     }
 
+
+
     private ArrayList<User> searchUser(String mUser) {
         // Crear el objeto de tipo ArrayList que será el valor que retorne
-        ArrayList<Product> arrProduct = new ArrayList<Product>();
+        ArrayList<User> arrUser = new ArrayList<User>();
         // Crear un objeto de la clase SQLiteDatabase
         SQLiteDatabase osdbRead = oDB.getReadableDatabase();
-        String query = "Select description, price, typeref from product where reference = '"+mRef+"'";
+        String query = "Select username, fullname, password from user where username = '"+mUser+"'";
         // Generar una tabla cursor para almacenar los datos del query
-        Cursor cProduct = osdbRead.rawQuery(query,null);
+        Cursor cUser = osdbRead.rawQuery(query,null);
         // Chequear como quedo la tabla cursor
-        if (cProduct.moveToFirst()){
-            oProduct.setReference(mRef);
-            oProduct.setDescription(cProduct.getString(0));
-            oProduct.setPrice(cProduct.getInt(1));
-            oProduct.setTyperef(cProduct.getInt(2));
-            arrProduct.add(oProduct);
+        if (cUser.moveToFirst()){
+            oUser.setUsername(mUser);
+            oUser.setFullname(cUser.getString(1));
+            oUser.setPassword(cUser.getString(2));
+
+            arrUser.add(oUser);
         }
-        return arrProduct;
+        return arrUser;
     }
 
 
