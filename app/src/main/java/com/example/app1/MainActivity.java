@@ -1,6 +1,7 @@
 package com.example.app1;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -63,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
         // Asignar el adaptador al Spinner
         refType.setAdapter(adpTypeRef);
         // Eventos de cada Boton
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ProductList.class));
+            }
+        });
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
